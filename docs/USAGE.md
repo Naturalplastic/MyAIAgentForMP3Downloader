@@ -32,11 +32,42 @@ cd MyMP3Download
 bash scripts/setup_tools.sh
 ```
 
-该脚本从镜像下载便携版静态构建至 `.tools/` 目录，无需 root 权限。
-脚本具备幂等性，重复执行会跳过已存在的文件。
+`.tools/` 目录约 150 MB，已排除在版本控制之外，因此**不会随仓库分发**，
+在新环境上必须执行本步骤一次。
+
+脚本行为：
+
+| 项 | 说明 |
+|---|---|
+| 权限 | 无需 root，不修改系统目录 |
+| 平台识别 | 自动识别操作系统与 CPU 架构，不支持的组合会给出替代方案 |
+| 幂等性 | 已存在且可用的文件跳过下载 |
+| 原子安装 | 先下载至临时文件并校验可执行，通过后才替换正式文件 |
+| 文件校验 | 判定标准为实际执行并输出版本号，而非仅检查文件是否存在 |
+
+相关参数：
+
+```bash
+bash scripts/setup_tools.sh --check    # 仅检查是否就绪，不下载
+bash scripts/setup_tools.sh --force    # 强制重新下载
+```
+
+支持的平台：Linux（x64 / arm64 / arm / ia32）、macOS（x64 / arm64）、
+Windows（x64 / ia32）、FreeBSD（x64）。
+
+网络受限时可指定其他镜像：
+
+```bash
+FFMPEG_STATIC_MIRROR=https://your-mirror/path bash scripts/setup_tools.sh
+```
 
 若系统已安装 ffmpeg，可跳过本步骤。查找顺序为：
-环境变量 → 项目 `.tools/` → `PATH`。
+环境变量 → 项目 `.tools/` → `PATH`。也可显式指定：
+
+```bash
+export BILIAGENT_FFMPEG=/usr/bin/ffmpeg
+export BILIAGENT_FFPROBE=/usr/bin/ffprobe
+```
 
 ### 2.3 配置 API key
 

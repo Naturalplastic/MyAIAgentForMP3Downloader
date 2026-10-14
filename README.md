@@ -45,7 +45,7 @@ harness 的每一层均为自行实现。
 无需安装 Python 依赖（`requirements.txt` 为空，运行时仅使用标准库）。
 
 ```bash
-# 1. 获取便携 ffmpeg（无需 root）
+# 1. 获取便携 ffmpeg（无需 root；不随仓库分发，新环境需执行一次）
 bash scripts/setup_tools.sh
 
 # 2. 配置 API key
@@ -71,7 +71,7 @@ python3 -m biliagent.cli agent "我想要泠鸢的泼墨漓江，要 mp3 音频"
 |---|---|
 | Python | 3.10 及以上 |
 | 第三方 Python 包 | 无 |
-| ffmpeg / ffprobe | 抽取音频时必需，可由脚本自动获取 |
+| ffmpeg / ffprobe | 抽取音频时必需。不随仓库分发，由 `scripts/setup_tools.sh` 获取 |
 | 权限 | 无需 root |
 
 ---

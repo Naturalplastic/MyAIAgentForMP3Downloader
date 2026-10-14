@@ -92,6 +92,7 @@ MyMP3Download/
 │   ├── test_loop.py
 │   └── test_tools.py
 └── .tools/                 便携外部工具（不入版本控制）
+                            由 scripts/setup_tools.sh 获取
 ```
 
 ---
