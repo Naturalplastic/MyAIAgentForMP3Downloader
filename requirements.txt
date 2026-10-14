@@ -1,0 +1,13 @@
+# 本文件为空 —— 本项目无第三方 Python 依赖。
+#
+# 运行时仅使用 Python 标准库：
+#   argparse  html  http.cookiejar  json  os  re  shutil
+#   subprocess  sys  time  urllib.request  urllib.error  urllib.parse
+#
+# 因此无需执行：pip install -r requirements.txt
+#
+# 唯一的外部依赖是 ffmpeg / ffprobe 命令行程序，不是 Python 包。
+# 获取方式：
+#   bash scripts/setup_tools.sh
+#
+# 环境要求：Python 3.10 及以上（代码使用了 X | None 与 tuple[list, int] 语法）
